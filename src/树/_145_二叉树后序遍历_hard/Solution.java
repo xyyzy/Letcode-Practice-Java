@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class Solution {
-    public class TreeNode {
+    private class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
