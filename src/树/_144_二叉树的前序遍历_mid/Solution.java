@@ -64,8 +64,9 @@ public class Solution {
     public List<Integer> preorderTraversal3(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        if (root==null)
+        if (root==null) {
             return list;
+        }
         TreeNode node = root;
         while (!stack.isEmpty()||node!=null){
             //找到最左边的节点
