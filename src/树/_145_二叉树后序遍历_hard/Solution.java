@@ -24,8 +24,9 @@ public class Solution {
         return list;
     }
     private void helper(TreeNode root,List<Integer>list){
-        if (root==null)
+        if (root==null) {
             return;
+        }
         helper(root.left,list);
         helper(root.right,list);
         list.add(root.val);
@@ -61,7 +62,7 @@ public class Solution {
         return list;
     }
 
-    /*
+    /**
     * 利用前序遍历 根-左-右  后序遍历 左-右-根
     * 所以先变成 根-右-左
     * 先按前序遍历的规则 然后reverse
@@ -69,8 +70,9 @@ public class Solution {
     public List<Integer> postorderTraversal3(TreeNode root){
         List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        if (root==null)
+        if (root==null) {
             return list;
+        }
         stack.push(root);
         while (!stack.isEmpty()){
             TreeNode node = stack.pop();

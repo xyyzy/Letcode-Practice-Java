@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class Solution {
-    private class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -16,7 +16,7 @@ public class Solution {
         }
     }
 
-    /*
+    /**
      * 递归
      * */
     public List<Integer> inorderTraversal(TreeNode root) {
@@ -26,8 +26,9 @@ public class Solution {
     }
 
     private void helper(TreeNode root, List<Integer> list) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         helper(root.left, list);
         list.add(root.val);
         helper(root.right, list);
@@ -35,7 +36,7 @@ public class Solution {
     }
 
 
-    /*
+    /**
      *  栈的迭代
      * */
     public List<Integer> inorderTraversal1(TreeNode root) {
@@ -49,7 +50,7 @@ public class Solution {
             }
             curr = stack.pop();
             list.add(curr.val);
-            stack.push(curr.right);
+            curr =curr.right;
         }
         return list;
     }
@@ -75,8 +76,9 @@ public class Solution {
     public List<Integer> inorderTraversal2(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         TreeNode current = root;
-        if (current==null)
+        if (current==null) {
             return list;
+        }
         while (current != null) {
             //如果其左子树为空直接跳转到右子树上
             if (current.left == null) {
@@ -119,8 +121,9 @@ public class Solution {
     }
 
     public List<Integer> inorderTraversal3(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return new ArrayList<Integer>();
+        }
 
         List<Integer> list = new ArrayList<>();
         Stack<ColorNode> stack = new Stack<>();
