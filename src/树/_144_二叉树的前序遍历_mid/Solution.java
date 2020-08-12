@@ -24,8 +24,9 @@ public class Solution {
         return list;
     }
     private void helper (TreeNode root,List<Integer> list){
-        if (root==null)
+        if (root==null) {
             return;
+        }
         list.add(root.val);
         helper(root.left,list);
         helper(root.right,list);
@@ -37,18 +38,22 @@ public class Solution {
     public List<Integer> preorderTraversal2(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        if (root==null)
+        if (root==null) {
             return list;
+        }
         stack.push(root);
         while (!stack.isEmpty()){
             TreeNode node = stack.pop();
-            if (node!=null)
+            if (node!=null) {
                 list.add(node.val);
+            }
             //因为stack先进后出所以先添加右节点
-            if (node.right!=null)
+            if (node.right!=null) {
                 stack.push(node.right);
-            if (node.left!=null)
+            }
+            if (node.left!=null) {
                 stack.push(node.left);
+            }
         }
         return list;
     }
