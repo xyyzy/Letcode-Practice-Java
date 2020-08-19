@@ -20,42 +20,49 @@ public class Solution {
     * */
     List<List<Integer>> list = new ArrayList<List<Integer>>();
     public List<List<Integer>> levelOrder(TreeNode root) {
-        if (root==null)
+        if (root==null) {
             return list;
+        }
         int level =0;
         helper(root,level);
         return  list;
     }
 
     private void helper(TreeNode node,int level){
-        if (list.size()==level)
+        if (list.size()==level) {
             list.add(new ArrayList<Integer>());
+        }
         list.get(level).add(node.val);
-        if (node.left!=null)
+        if (node.left!=null) {
             helper(node.left,level+1);
-        if (node.right!=null)
+        }
+        if (node.right!=null) {
             helper(node.right,level+1);
+        }
     }
     /*
     * 迭代
     * */
     public List<List<Integer>> levelOrder2(TreeNode root) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
-        if (root == null) return lists;
+        if (root == null) {
+            return lists;
+        }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int level = 0;
         while (!queue.isEmpty()) {
             lists.add(new ArrayList<Integer>());
-
-            int level_size = queue.size();
-            for (int i = 0; i <level_size; i++) {
+            int levelSize = queue.size();
+            for (int i = 0; i <levelSize; i++) {
                 TreeNode temp = queue.remove();
                 lists.get(level).add(temp.val);
-                if (temp.left!=null)
+                if (temp.left!=null) {
                     queue.add(temp.left);
-                if (temp.right!=null)
+                }
+                if (temp.right!=null) {
                     queue.add(temp.right);
+                }
             }
             level++;
         }
