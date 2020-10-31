@@ -30,6 +30,9 @@ public class RandomizedCollection {
     /**
      * Removes a value from the collection. Returns true if the collection contained the specified element.
      */
+    /**
+     * 将要删除的数移到最后在删除
+     * */
     public boolean remove(int val) {
         if (!idx.containsKey(val)) {
             return false;
