@@ -1,6 +1,6 @@
 package 蓝桥杯模拟赛;
 
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
 
 import java.util.Scanner;
 
