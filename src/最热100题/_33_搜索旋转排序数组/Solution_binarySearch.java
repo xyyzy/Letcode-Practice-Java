@@ -1,6 +1,6 @@
 package 最热100题._33_搜索旋转排序数组;
 
-public class Solution {
+public class Solution_binarySearch {
     public int search(int[] nums, int target) {
         int left = 0, right = nums.length - 1, mid = 0;
         int len = nums.length;
