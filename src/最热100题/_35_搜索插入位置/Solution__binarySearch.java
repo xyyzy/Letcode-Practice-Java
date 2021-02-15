@@ -12,11 +12,11 @@ public class Solution__binarySearch {
         int right = nums.length - 1;
         int mid;
         while (left < right) {
-            //中间值往左区间
-            mid = left + (right - left + 1) / 2;
-            if (nums[mid] > target)
-                right = mid;
-            else left = mid-1;
+            // 中间值放左区间
+            mid = left + (right - left ) / 2;
+            if (nums[mid] < target)
+                left = mid+1;
+            else right = mid;
         }
         return left;
     }
