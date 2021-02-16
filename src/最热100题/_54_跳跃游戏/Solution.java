@@ -1,5 +1,8 @@
 package 最热100题._54_跳跃游戏;
 
+/**
+ * 贪心
+ * */
 public class Solution {
     public boolean canJump(int[] nums) {
         if (nums.length == 0)
