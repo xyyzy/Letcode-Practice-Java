@@ -16,7 +16,7 @@ public class Solution {
      * F(i,n)  表示以i为根节点长度为n构建的二叉树种类
      *
      * */
-    public int numTrees(int n) {
+    public static int numTrees(int n) {
         int[] G = new int[n + 1];
         G[0] = 1;
         G[1] = 1;
@@ -28,5 +28,9 @@ public class Solution {
         }
         return G[n];
 
+    }
+
+    public static void main(String[] args) {
+        int i = numTrees(3);
     }
 }
