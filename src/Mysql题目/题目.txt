@@ -1,0 +1,28 @@
+1.取得每个部门最高薪水的人员名称
+第一步：找到各个部门最高薪水
+select deptno,max(sal) as maxsal from emp group by deptno;
+第二步：将查询出来的做临时表，然后链接
+select
+    e.ename,t.*
+from
+    emp e
+join
+    (select deptno,max(sal) as maxsal from emp group by deptno) t
+on
+    t.deptno = e.deptno and t.maxsal = e.sal;
+
+
+2.查询出哪些人的薪水在部门的平均薪水之上
+第一步:找出每个部门的平均薪水
+select deptno,vag(sal) as avgsal from emp group by deptno
+第二步：将查询结果当作t 然后链接
+select
+    t.*,e.name,e.sal
+from
+    emp e
+join
+    (select deptno,vag(sal) as avgsal from emp group by deptno) t
+on
+    e.deptno = t.deptno and e.sal > t.avgsal
+
+3.取得部门中所有人的
