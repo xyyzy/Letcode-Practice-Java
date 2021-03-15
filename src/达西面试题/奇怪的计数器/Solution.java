@@ -1,6 +1,8 @@
 package 达西面试题.奇怪的计数器;
 
 
+import java.util.HashMap;
+
 public class Solution {
     public static long strangeConuter(long t) {
    /*     int num = 3;
@@ -14,6 +16,8 @@ public class Solution {
             }
         }
         return num;*/
+
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
         long num = 3;
         long flag = 0;
         long temp =t;

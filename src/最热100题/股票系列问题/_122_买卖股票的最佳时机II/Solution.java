@@ -1,4 +1,4 @@
-package 最热100题._122_买卖股票的最佳时机II;
+package 最热100题.股票系列问题._122_买卖股票的最佳时机II;
 
 public class Solution {
     public int maxProfit(int[] prices) {

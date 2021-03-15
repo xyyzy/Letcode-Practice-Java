@@ -1,4 +1,4 @@
-package 最热100题._121_买卖股票的最佳时机;
+package 最热100题.股票系列问题._121_买卖股票的最佳时机;
 
 import java.util.ArrayDeque;
 

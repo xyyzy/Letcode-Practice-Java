@@ -1,4 +1,4 @@
-package 最热100题._123_买卖股票的最佳时机III;
+package 最热100题.股票系列问题._123_买卖股票的最佳时机III;
 
 public class Solution {
     /**
