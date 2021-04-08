@@ -1,22 +1,63 @@
 package 面试;
 
-class RunnableTest implements Runnable {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+
+class Person{
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
-    public void run() {
-        for (int i = 0; i < 10; i++) {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(Thread.currentThread().getName() + ":" + i);
-        }
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
 public class test {
-    static int  a;
-    public static void main(String[] args) {
 
-        System.out.println(a);
+    public static void main(String[] args) {
+        Person s1 = new Person("小明", 12);
+        Person s2 = new Person("小红", 16);
+        Person s3 = new Person("小白", 14);
+        Person s4 = new Person("小黄", 13);
+        ArrayList<Person> s = new ArrayList<>();
+        s.add(s1);
+        s.add(s2);
+        s.add(s3);
+        s.add(s4);
+        Collections.sort(s, new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        for (Person person : s) {
+            System.out.println(person);
+        }
     }
 }
