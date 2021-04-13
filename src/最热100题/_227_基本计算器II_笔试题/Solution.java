@@ -1,9 +1,6 @@
 package 最热100题._227_基本计算器II_笔试题;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Solution {
 
@@ -17,7 +14,7 @@ public class Solution {
         put('%', 2);
         put('^', 3);
     }};
-    public static int calculate(String s) {
+    public static Long calculate(String s) {
         // 将所有的空格去掉，并将 (- 替换为 (0-，(+ 替换为 (0+
         // 当然这里也可以不预处理，而是放到循环里面去做判断
         s = s.replaceAll(" ", "");
@@ -26,9 +23,9 @@ public class Solution {
         char[] cs = s.toCharArray();
         int n = s.length();
         // 存放所有的数字
-        Deque<Integer> nums = new ArrayDeque<>();
+        Deque<Long> nums = new ArrayDeque<>();
         // 为了防止第一个数为负数，先往 nums 加个 0
-        nums.addLast(0);
+        nums.addLast(0L);
         // 存放所有「非数字以外」的操作
         Deque<Character> ops = new ArrayDeque<>();
         for (int i = 0; i < n; i++) {
@@ -51,7 +48,7 @@ public class Solution {
                     int j = i;
                     // 将从 i 位置开始后面的连续数字整体取出，加入 nums
                     while (j < n && isNumber(cs[j])) u = u * 10 + (cs[j++] - '0');
-                    nums.addLast(u);
+                    nums.addLast((long) u);
                     i = j - 1;
                 } else {
                     // 有一个新操作要入栈时，先把栈内可以算的都算了
@@ -72,12 +69,12 @@ public class Solution {
         while (!ops.isEmpty()) calc(nums, ops);
         return nums.peekLast();
     }
-    static void calc(Deque<Integer> nums, Deque<Character> ops) {
+    static void calc(Deque<Long> nums, Deque<Character> ops) {
         if (nums.isEmpty() || nums.size() < 2) return;
         if (ops.isEmpty()) return;
-        int b = nums.pollLast(), a = nums.pollLast();
+        Long b = nums.pollLast(), a = nums.pollLast();
         char op = ops.pollLast();
-        int ans = 0;
+        long ans = 0;
         if (op == '+') ans = a + b;
         else if (op == '-') ans = a - b;
         else if (op == '*') ans = a * b;
@@ -93,8 +90,9 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        String  s ="3+2/4+3";
-        int calculate = calculate(s);
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        Long calculate = calculate(s);
         System.out.println(calculate);
     }
 }

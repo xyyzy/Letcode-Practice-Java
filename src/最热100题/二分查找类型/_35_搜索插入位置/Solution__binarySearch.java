@@ -1,4 +1,4 @@
-package 最热100题._35_搜索插入位置;
+package 最热100题.二分查找类型._35_搜索插入位置;
 
 public class Solution__binarySearch {
     public int searchInsert(int[] nums, int target) {
