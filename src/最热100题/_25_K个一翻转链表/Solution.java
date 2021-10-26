@@ -20,37 +20,36 @@ public class Solution {
 
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode dummy = new ListNode(0);
-        //假节点的next指向head。
-        // dummy->1->2->3->4->5
         dummy.next = head;
         //初始化pre和end都指向dummy。pre指每次要翻转的链表的头结点的上一个节点。end指每次要翻转的链表的尾节点
         ListNode pre = dummy;
         ListNode end = dummy;
+
         while (end.next != null) {
+            //找到要反转的尾节点
             for (int i = 0; i < k && end != null; i++) {
                 end = end.next;
             }
-            //如果end==null，即需要翻转的链表的节点数小于k，不执行翻转。
-            if (end == null) {
+            //说明剩余链表长度不够k
+            if (end == null)
                 break;
-            }
             //记录未翻转区的第一个节点, 方便断开后链接
             ListNode next = end.next;
             //先断开链接
             end.next = null;
+            //指向要反转的第一个节点
             ListNode start = pre.next;
-            //反转[start...end]之间的链表
+            //反转
             pre.next = resver(start);
-            start.next = next;
-            pre = start;
-            end = start;
+            pre = next;
+            end = next;
         }
         return dummy.next;
     }
 
     /**
      * 翻转链表
-     * */
+     */
     private ListNode resver(ListNode start) {
         if (start == null || start.next == null) {
             return start;

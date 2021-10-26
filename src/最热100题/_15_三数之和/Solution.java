@@ -24,6 +24,7 @@ public class Solution {
                 int sum = nums[i] + nums[L] + nums[R];
                 if (sum == 0) {
                     list.add(Arrays.asList(nums[i], nums[L], nums[R]));
+                    //去重
                     while (L < R && nums[R] == nums[R - 1]) R--;
                     while (L < R && nums[L] == nums[L + 1]) L++;
                     R--;

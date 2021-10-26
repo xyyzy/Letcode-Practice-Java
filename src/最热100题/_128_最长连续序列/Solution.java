@@ -15,7 +15,7 @@ public class Solution {
         }
         int res = 0;
         for (int num : nums) {
-            //包含num-1
+            //包含num-1说明起点不是num
             if (set.contains(num - 1))
                 continue;
             else {

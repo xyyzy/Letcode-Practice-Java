@@ -2,6 +2,7 @@ package 最热100题._23_合并K个链表;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class Solution {
     public class ListNode {
@@ -77,11 +78,44 @@ public class Solution {
         return head.next;
     }
 
+
+    /**
+     * 利用已有的数据结构
+     */
+    public ListNode mergeKLists3(ListNode[] lists) {
+        if (lists == null)
+            return null;
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+                return o1.val - o2.val;
+            }
+        });
+
+        for (int i = 0; i < lists.length; i++) {
+            while (lists[i] != null) {
+                queue.add(lists[i]);
+                lists[i] = lists[i].next;
+            }
+        }
+
+        ListNode dummy = new ListNode(0);
+        ListNode head = dummy;
+        while (!queue.isEmpty()) {
+            dummy.next = queue.poll();
+            dummy = dummy.next;
+        }
+        dummy.next = null;
+        return head.next;
+    }
+
+
+
     /*
-    * 分治合并
-    * 采用归并排序的思想
-    *
-    * */
+     * 分治合并
+     * 采用归并排序的思想
+     *
+     * */
     public ListNode mergeKLists2(ListNode[] lists) {
         return merge(lists, 0, lists.length - 1);
     }
@@ -97,6 +131,7 @@ public class Solution {
         int mid = (l + r) >> 1;
         return mergeTwoLists2(merge(lists, l, mid), merge(lists, mid + 1, r));
     }
+
     public ListNode mergeTwoLists2(ListNode a, ListNode b) {
         if (a == null || b == null) {
             return a != null ? a : b;
@@ -116,4 +151,6 @@ public class Solution {
         tail.next = (aPtr != null ? aPtr : bPtr);
         return head.next;
     }
+
+
 }

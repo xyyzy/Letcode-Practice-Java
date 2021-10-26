@@ -46,7 +46,7 @@ public class Solution {
     public static void main(String[] args) {
         int []nums = {1,3,5,5,6,6,8,9,11};
         int target = 0;
-        int i = lowBoundnum(nums, target, 0, nums.length - 1);
+        int i = lowBoundnum(nums, 5, 0, nums.length - 1);
         int i1 = upperBoundnum(nums, 7, 0, nums.length - 1);
         System.out.println(i);
         System.out.println(i1);
